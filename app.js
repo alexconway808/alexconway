@@ -1,3 +1,8 @@
+//Middleware Dependencies
+var mongoose = require ('./mongoose'); //won't show up in dependencies?
+var methodOverride = require ('method-override'); //need this?
+var session = require ('express-session'); //need this?
+var jade = require ('jade'); 
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -25,6 +30,33 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+
+//Blog Tasks
+
+//Setup mongolab, it was down for me
+
+//CRUD
+//Create the Post schema
+
+//Define the Post schema
+
+//Create
+//app.post - new blog post
+
+//Read
+//app.get - list blog posts
+
+//Update
+//app.get - edit blog post 
+
+//Delete
+//app.delete - delete blog post
+
+//Authentication
+
+//Comments
+
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
