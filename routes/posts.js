@@ -38,13 +38,13 @@ var Post = mongoose.model('Post', postSchema);
 
 
 //Get New Posts - new form
-router.get('/posts/new', function (req, res){
-    res.render('/posts/new.jade');
+router.get('/new', function (req, res){
+    res.render('posts/new');
 });
 
 
 //Post - create redirect
-router.post('/posts', function (req, res){
+router.post('/', function (req, res){
     var newPost = new Post({
         title: req.param ('title'),
         body: req.param ('body'),
@@ -56,7 +56,7 @@ router.post('/posts', function (req, res){
     newPost.save(function (wert, post){
         if(wert){res.send(500, wert);}
 
-        res.redirect('/posts');
+        res.redirect('/');
     });
 });
 

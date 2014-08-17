@@ -17,7 +17,7 @@ var posts = require('./routes/posts');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'templates'));
 app.set('view engine', 'jade');
 
 // app.use(favicon(__dirname + '/public/img/favicon.ico'));
