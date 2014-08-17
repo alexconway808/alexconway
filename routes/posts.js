@@ -45,19 +45,13 @@ router.get('/new', function (req, res){
 
 //Post - create redirect
 router.post('/new', function (req, res){
+    
     var newPost = new Post({
         title: req.param ('title'),
         body: req.param ('body'),
-        console.log(req.param('body'));
-
         tags: req.param ('tags'),
-        console.log(req.param('tags'));
-        
         created: req.param ('created'), //Pull dynamically?
-        console.log(req.param('created'));
-        
         author: req.param ('author') //connect to logged in userid
-        console.log(req.param('author'));
     })
     newPost.save(function (wert, post){
         if(wert){res.send(500, wert);}
