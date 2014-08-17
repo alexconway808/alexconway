@@ -1,6 +1,6 @@
 //Middleware Dependencies
-var mongoose = require ('./mongoose'); //won't show up in dependencies?
-var methodOverride = require ('method-override'); //need this?
+var mongoose = require ('mongoose'); //won't show up in dependencies?
+var methodOverride = require('method-override'); //need this?
 var session = require ('express-session'); //to do for later
 var jade = require ('jade'); 
 var express = require('express');
