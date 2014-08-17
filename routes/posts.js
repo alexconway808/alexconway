@@ -44,15 +44,21 @@ router.get('/new', function (req, res){
 
 
 //Post - create redirect
-router.post('/', function (req, res){
+router.post('/new', function (req, res){
     var newPost = new Post({
         title: req.param ('title'),
         body: req.param ('body'),
-        tags: req.param ('tags'), //Array?
-        created: req.param ('date'), //Pull dynamically?
-        author: req.param ('userid') //connect to logged in userid
+        console.log(req.param('body'));
+
+        tags: req.param ('tags'),
+        console.log(req.param('tags'));
+        
+        created: req.param ('created'), //Pull dynamically?
+        console.log(req.param('created'));
+        
+        author: req.param ('author') //connect to logged in userid
+        console.log(req.param('author'));
     })
-    //What does this do?
     newPost.save(function (wert, post){
         if(wert){res.send(500, wert);}
 
