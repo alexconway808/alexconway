@@ -12,6 +12,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/user');
+var posts = require('./routes/posts');
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/posts', posts);
 
 
 //Authentication
@@ -71,3 +73,7 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+
+app.listen(1337, function () {
+  console.log('%s listening at %s', app.name, app.url);
+});

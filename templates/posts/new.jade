@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  h1 New Blog Post
+  form(action='/post', method = 'POST', enctype='application/x-www-form-urlencoded')
+    p
+      label(for='title_input') Title
+      input#title_input( type='text', name='title')
+    p
+      label(for='body_input') Body    
+      input#body_input( type='text', name='body_input')
+    p
+      label(for='tags_input') Tags
+      input#tags_input( type='text', name='tags_input')
+    p
+      label(for='created_input') Created
+      input#created_input( type='text', name='created_input')
+    p
+      label(for='author_input') Author
+      input#author_input( type='text', name='author_input')
+    p
+      button Submit Post    
