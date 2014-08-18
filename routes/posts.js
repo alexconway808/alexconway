@@ -7,8 +7,6 @@ mongoose.connect ('mongodb://alexconwayblog:1234@ds063449.mongolab.com:63449/ale
 
 //Blog Tasks
 
-//Setup mongolab, it was down for me
-
 //Create the Post schema
 var Schema = mongoose.Schema;
 
@@ -60,15 +58,15 @@ router.post('/new', function (req, res){
     });
 });
 
-// //Get Post with id - show with Jade template
-// router.get('/posts/:id', function (req, res){
-//     var id = req.params.id;
-//     Post.findOne({_id: id}, function (err, post){
-//         var options = {};
-//         options.currentPost = post;
-//         res.render('posts/show.jade', options);
-//     });
-// });
+//Get Post with id - show with Jade template
+router.get('/:id', function (req, res){
+    var id = req.params.id;
+    Post.findOne({_id: id}, function (err, post){
+        var options = {};
+        options.currentPost = post;
+        res.render('posts/show', options);
+    });
+});
 
 // //Get Posts with id and edit with a form
 // router.get('/posts/:id/edit', function (req, res){
