@@ -28,11 +28,11 @@ var Post = mongoose.model('Post', postSchema);
 
 
 //Get Posts - list works with Jade templates
-// router.get('/posts', function (req, res){
-//     Post.find(function (err, tasks){
-//         res.render('post/list.jade',{posts: posts});
-//     });
-// });
+router.get('/posts', function (req, res){
+    Post.find(function (err, tasks){
+        res.render('post/list',{posts: posts});
+    });
+});
 
 
 //Get New Posts - new form
@@ -64,50 +64,46 @@ router.get('/:id', function (req, res){
     Post.findOne({_id: id}, function (err, post){
         var options = {};
         options.currentPost = post;
+        console.log(id);
         res.render('posts/show', options);
     });
 });
 
-// //Get Posts with id and edit with a form
-// router.get('/posts/:id/edit', function (req, res){
-//     Post.findOne(req.params.id, function (err, post){
-//         var options = {};
-//         options.currentPost = post;
-//         res.render('posts/edit.jade', options);
-//     });
-// });
+//Get Posts with id and edit with a form
+router.get('/:id/edit', function (req, res){
+    Post.findOne(req.params.id, function (err, post){
+        var options = {};
+        options.currentPost = post;
+        res.render('posts/edit', options);
+    });
+});
 
 
-// //Put Posts with id - update with a redirect
-// router.put ('tasks/:id', function (req, res){
-//     var id = req.params.id;
-//     Post.findOneAndUpdate(
-//         {_id: id},
-//         {
-//             title: req.param ('title'),
-//             body: req.param ('body'),
-//             tags: req.param ('tags'), //Array?
-//             created: new Date (), //Pull dynamically?
-//             modified: new Date (), //Pull dynamically?
-//             status: req.param ('published'),
-//             author: req.param ('userid') //connect to logged in
-//         },
-//         function (err, task) {
-//             res.redirect('/posts');
-//         }
-//     )
-// });
+//Put Posts with id - update with a redirect
+router.put ('tasks/:id', function (req, res){
+    var id = req.params.id;
+    Post.findOneAndUpdate(
+        {_id: id},
+        {
+            title: req.param ('title'),
+            body: req.param ('body'),
+            tags: req.param ('tags'), 
+            created: req.param ('created'), 
+            author: req.param ('author')
+        },
+        function (err, task) {
+            res.redirect('/posts');
+        }
+    )
+});
 
 
-// //Delete Posts with id - destroy with redirect
-// router.delete ('/posts/:id', function (req, res){
-//     Post.findByIdAndRemove(req.params.id, function (err, task){
-//         res.redirect('/tasks')
-//     });
-// });
+//Delete Posts with id - destroy with redirect
+router.delete ('/:id', function (req, res){
+    Post.findByIdAndRemove(req.params.id, function (err, task){
+        res.redirect('/posts')
+    });
+});
 
-//Comments
-
-//Edit Comments
 
 module.exports = router;

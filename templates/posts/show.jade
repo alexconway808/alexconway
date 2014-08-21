@@ -2,14 +2,14 @@ extends ../layout
 
 block content
   H1 Hello World Blog Post
-    p = currentPost.title
+    p= currentPost.title
     br
-    p = currentPost.body 
+    p= currentPost.body 
     br
-    p = currentPost.tags
+    p= currentPost.tags
     br
-    p = currentPost.created
+    p= currentPost.created
     br
-    p = currentPost.author
-      a(href='/posts/#{currentPost._id}/edit')
+    p= currentPost.author
+      a(href='/#{currentPost._id}/edit')
         button(type = 'Submit') Edit Post
